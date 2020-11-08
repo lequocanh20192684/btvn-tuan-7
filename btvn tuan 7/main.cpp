@@ -2,7 +2,7 @@
 using namespace std;
 
 //bài 1
-/*typedef int MT[20][20];
+typedef int MT[20][20];
 
 void nhapmt(MT a, int m, int n)
 {
