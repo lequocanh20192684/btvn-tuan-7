@@ -2,23 +2,39 @@
 using namespace std;
 
 //bài 1
+/*typedef struct hang_cot_va_ten
+{
+    int hang;
+    int cot;
+    char ten[20];
+}hct;
+
+istream& operator >> (istream& is, hct& a)
+{
+    cout << "nhap ten mt: ";
+    is >> a.ten;
+    cout << "\nnhap hang va cot: ";
+    is >> a.hang >> a.cot; cout << "\n";
+    return is;
+}
+
 typedef int MT[20][20];
 
-void nhapmt(MT a, int m, int n)
+void nhapmt(MT a, char* ten, int m, int n)
 {
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            cout << "nhap phan tu " << i << " " << j << ": ";
+            cout << "nhap phan tu " << i << " " << j << " " << "cua " << ten << ": ";
             cin >> a[i][j];
         }
     }
 }
 
-void inmt (MT a, int m, int n)
+void inmt (MT a, char* ten, int m, int n)
 {
-    cout << "ma tran chu nhat: " << endl;
+    cout << "ma tran " << ten << " co dang: " << endl;
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j <= n; j++)
@@ -33,7 +49,7 @@ void inmt (MT a, int m, int n)
     }
 }
 
-void nhapmt(MT a, int n)
+void nhapmt(MT a, char* ten, int n)
 {
     for (int i = 0; i < n; i++)
     {
@@ -45,9 +61,9 @@ void nhapmt(MT a, int n)
     }
 }
 
-void inmt (MT a, int n)
+void inmt (MT a, char* ten, int n)
 {
-    cout << "ma tran vuong: " << endl;
+    cout << "ma tran " << ten << " co dang: " << endl;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j <= n; j++)
@@ -98,23 +114,18 @@ void nhanmt (MT a, MT b, MT c, int n)
 
 int main()
 {
-    int m, n; cout << "nhap so hang va cot cua mtcn thu 1: "; cin >> m >> n;
-    int p; cout << "nhap cot cua mtcn thu 2: "; cin >> p;
-    //int x; cout << "nhap so hang va cot cua mtv: "; cin >> x;
     MT A, B, C, D, E, F;
-    nhapmt(A, m, n);
-    inmt(A, m, n);
-    nhapmt(B, n, p);
-    inmt(B, n, p);
-    nhanmt(A, B, E, m, n, p);
-    inmt(E, m, p);
-    int q; cout << "nhap so hang va cot cua mtv thu 1 va 2: "; cin >> q;
-    nhapmt(C, q);
-    inmt(C, q);
-    nhapmt(D, q);
-    inmt(D, q);
-    nhanmt(C, D, F, q);
-    inmt(F, q);
+    hct a, b, c, d, e, f;
+    cin >> a; nhapmt(A, a.ten, a.hang, a.cot); inmt(A, a.ten, a.hang, a.cot);
+    cin >> b; nhapmt(B, b.ten, b.hang, b.cot); inmt(B, b.ten, b.hang, b.cot);
+    cin >> c; nhapmt(C, c.ten, c.hang); inmt(C, c.ten, c.hang);
+    cin >> d; nhapmt(D, d.ten, d.hang); inmt(D, d.ten, d.hang); fflush(stdin);
+    nhanmt(A, B, E, a.hang, a.cot, b.cot);
+    cout << "dat ten mt tich cua " << a.ten << " va " << b.ten << " : "; gets(e.ten);
+    inmt(E, e.ten, a.hang, b.cot);
+    nhanmt(C, D, F, c.hang);
+    cout << "dat ten mt tich cua " << c.ten << " va " << d.ten << " : "; gets(f.ten);
+    inmt(F, f.ten, c.hang);
 }*/
 
 //bài 2
@@ -159,56 +170,56 @@ int uscln(int x, int y)
 
 PS operator * (PS p1, PS p2)
 {
-    PS ps1;
-    ps1.a = p1.a * p2.a;
-    ps1.b = p1.b * p2.b;
-    return ps1;
+    PS psm;
+    psm.a = p1.a * p2.a;
+    psm.b = p1.b * p2.b;
+    return psm;
 }
 
 PS operator + (PS p1, PS p2)
 {
-    PS ps1, p1m, p2m;
+    PS psm, p1m, p2m;
     if (p1.b == p2.b)
     {
-        ps1.a = p1.a + p2.a;
-        ps1.b = p1.b;
+        psm.a = p1.a + p2.a;
+        psm.b = p1.b;
     }else if (p1.b != p2.b)
     {
         p1m.a = p1.a * p2.b;
         p2m.a = p2.a * p1.b;
         p1m.b = p1.b * p2.b;
         p2m.b = p1.b * p2.b;
-        ps1.a = p1m.a + p2m.a;
-        ps1.b = p1m.b;
+        psm.a = p1m.a + p2m.a;
+        psm.b = p1m.b;
     }
-    return ps1;
+    return psm;
 }
 
 PS operator - (PS p1, PS p2)
 {
-    PS ps1, p1m, p2m;
+    PS psm, p1m, p2m;
     if (p1.b == p2.b)
     {
-        ps1.a = p1.a - p2.a;
-        ps1.b = p1.b;
+        psm.a = p1.a - p2.a;
+        psm.b = p1.b;
     }else if (p1.b != p2.b)
     {
         p1m.a = p1.a * p2.b;
         p2m.a = p2.a * p1.b;
         p1m.b = p1.b * p2.b;
         p2m.b = p1.b * p2.b;
-        ps1.a = p1m.a - p2m.a;
-        ps1.b = p1m.b;
+        psm.a = p1m.a - p2m.a;
+        psm.b = p1m.b;
     }
-    return ps1;
+    return psm;
 }
 
 PS operator / (PS p1, PS p2)
 {
-    PS ps1;
-    ps1.a = p1.a * p2.b;
-    ps1.b = p1.b * p2.a;
-    return ps1;
+    PS psm;
+    psm.a = p1.a * p2.b;
+    psm.b = p1.b * p2.a;
+    return psm;
 }
 
 PS rutgon (PS p)
@@ -225,9 +236,6 @@ int main()
     PS s;
     cout << "Nhap cac phan so p, q, z, u, v\n";
     cin >> p >> q >> z >> u >> v;
-    p = rutgon(p); q = rutgon(q); z = rutgon(z); u = rutgon(u); v = rutgon(v);
-    s =  (p - q * z) / (u + v);
-    s = rutgon(s);
+    s = rutgon((p - q * z) / (u + v));
     cout << "Phan so s = " << s << endl;
 }*/
-
