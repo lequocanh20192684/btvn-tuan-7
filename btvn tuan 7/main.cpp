@@ -119,12 +119,12 @@ int main()
     cin >> a; nhapmt(A, a.ten, a.hang, a.cot); inmt(A, a.ten, a.hang, a.cot);
     cin >> b; nhapmt(B, b.ten, b.hang, b.cot); inmt(B, b.ten, b.hang, b.cot);
     cin >> c; nhapmt(C, c.ten, c.hang); inmt(C, c.ten, c.hang);
-    cin >> d; nhapmt(D, d.ten, d.hang); inmt(D, d.ten, d.hang); fflush(stdin);
+    cin >> d; nhapmt(D, d.ten, d.hang); inmt(D, d.ten, d.hang);
     nhanmt(A, B, E, a.hang, a.cot, b.cot);
-    cout << "dat ten mt tich cua " << a.ten << " va " << b.ten << " : "; gets(e.ten);
+    cout << "dat ten mt tich cua " << a.ten << " va " << b.ten << " : "; cin >> e.ten;
     inmt(E, e.ten, a.hang, b.cot);
     nhanmt(C, D, F, c.hang);
-    cout << "dat ten mt tich cua " << c.ten << " va " << d.ten << " : "; gets(f.ten);
+    cout << "dat ten mt tich cua " << c.ten << " va " << d.ten << " : "; cin >> f.ten;
     inmt(F, f.ten, c.hang);
 }*/
 
